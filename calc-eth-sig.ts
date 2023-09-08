@@ -30,3 +30,11 @@ async function calcEthSig(plaintext) {
     // if s is less than half of the curve, we're on the "good" side of the curve, we can just return
     return { r, s }
 }
+
+
+const EcdsaSigAsnParse = asn1.define('EcdsaSig', function(this: any) {
+    this.seq().obj(
+        this.key('r').int(),
+        this.key('s').int(),
+    );
+});
